@@ -1,17 +1,20 @@
-import './App.css';
+import { QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { Switch, BrowserRouter } from 'react-router-dom';
+import Routes from './routes';
+import { queryClient } from './services/query-client';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={'cartrack-logo.svg'} className="App-logo" alt="logo" />
-        <p>
-          Welcome to Cartrack's Front-End Tech Challenge.
-        </p>
-        <p>
-          Happy Coding!
-        </p>
-      </header>
+    <div style={{height: '100vh', width: '100%'}}>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Switch>
+          <Routes />
+        </Switch>
+      </BrowserRouter>
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+    </QueryClientProvider>
     </div>
   );
 }
