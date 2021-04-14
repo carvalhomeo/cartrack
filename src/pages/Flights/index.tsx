@@ -1,4 +1,4 @@
-import {Container} from './styles';
+import {Container, Loading, CartrackImg} from './styles';
 import GoogleMapReact from 'google-map-react';
 import Airplane from '../../components/Airplane';
 import { useFlights } from '../../hooks/useFlights';
@@ -8,7 +8,7 @@ const Flights = () => {
     useJetPhotos();
     const {flights, isLoading, error} = useFlights();
     
-    if (isLoading) return <div>Loading</div>;
+    if (isLoading) return <Loading><CartrackImg src={'cartrack-logo.svg'}/></Loading>;
     if (error) return <div> error.message</div>;
 
     return (
