@@ -3,6 +3,8 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { Switch, BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 import { queryClient } from './services/query-client';
+import {ToastContainer, Flip} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -15,6 +17,16 @@ function App() {
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
+    <ToastContainer
+        toastStyle={{ padding: 0 }}
+        bodyStyle={{ margin: 0 }}
+        position={'top-right'}
+        hideProgressBar={false}
+        closeButton={false}
+        pauseOnHover={true}
+        autoClose={3000}
+        transition={Flip}
+      />
     </div>
   );
 }

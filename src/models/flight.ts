@@ -9,3 +9,9 @@ export interface Flight {
     velocity: number;
     true_track: number;
 }
+
+export interface iJetPhotos {
+    _id: string;
+    icao: string;
+    image: string;
+}

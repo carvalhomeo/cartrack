@@ -2,11 +2,9 @@ import {Container, Loading, CartrackImg} from './styles';
 import GoogleMapReact from 'google-map-react';
 import Airplane from '../../components/Airplane';
 import { useFlights } from '../../hooks/useFlights';
-import { useJetPhotos } from '../../hooks/useJetPhotos';
 
 const Flights = () => {
-    useJetPhotos();
-    const {flights, isLoading, error} = useFlights();
+    const {data: flights, isLoading, error} = useFlights();
     
     if (isLoading) return <Loading><CartrackImg src={'cartrack-logo.svg'}/></Loading>;
     if (error) return <div> error.message</div>;
@@ -23,6 +21,7 @@ const Flights = () => {
                     key={flight.icao24}
                     lat={flight.latitude}
                     lng={flight.longitude}
+                    flight={flight}
                 />
             ))}
             </GoogleMapReact>
